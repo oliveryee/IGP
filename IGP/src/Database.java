@@ -8,6 +8,7 @@ public class Database {
             //I think it was sqlite.jdbc-3.7.2.jar
             //Not entirely sure cause i downloaded 4 of them
             //check github.com/xerial
+            //Youtube a tutorial if needed
             Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Me\\Dropbox\\SEMESTER2\\BIF812\\test.db");
             System.out.println("Connection successful");

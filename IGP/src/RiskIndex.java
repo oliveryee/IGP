@@ -3,7 +3,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class RiskIndex extends Database{
-    //Connects to database and opens Blaeser table retrieving the closest entry to starting date
+    //Connects to database and opens Blaeser table retrieving the closest entry to starting date.
     public String selectDate(String date){
         Connection c = null;
         Statement stmt = null;

@@ -1,9 +1,6 @@
 import java.sql.*;
 import java.util.Scanner;
-/**
- *
- * @author sqlitetutorial.net
- */
+
 public class PowderyMildew {
     public static void main(String[] args) {
         System.out.println("Welcome to Test using MiniGenBankSeq");
