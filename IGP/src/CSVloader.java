@@ -10,6 +10,8 @@ import java.util.List;
 
 public class CSVloader {
     
+    //Opens and parses through file.
+    //Based off the code BIF812 sequence loader
     public void loadCSVFromFile(){
         //the next two lines show the dialog
         final JFileChooser fc = new JFileChooser();

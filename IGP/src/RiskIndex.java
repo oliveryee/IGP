@@ -3,6 +3,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class RiskIndex extends Database{
+    //Connects to database and opens Blaeser table retrieving the closest entry to starting date
     public String selectDate(String date){
         Connection c = null;
         Statement stmt = null;
@@ -21,6 +22,8 @@ public class RiskIndex extends Database{
           return error;
         }
     }
+    //Calculates risk index
+    //See http://ipm.ucanr.edu/PMG/r302100311.html
     public void calculateIndex(String startDate){
         Connection c = null;
         Statement stmt = null;
@@ -47,6 +50,11 @@ public class RiskIndex extends Database{
              for(String item:splitArray){
                  if (item.equals("1")){
                      count++;
+                 }
+                 else if (item.equals("2")){
+                     count = 0;
+                     max = 0;
+                     break;
                  }
                  else{
                      if (count>max){

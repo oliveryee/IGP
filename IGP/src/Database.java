@@ -4,6 +4,10 @@ public class Database {
 
     public Connection connectDatabase(){
         try{
+            //Need a special jar file
+            //I think it was sqlite.jdbc-3.7.2.jar
+            //Not entirely sure cause i downloaded 4 of them
+            //check github.com/xerial
             Class.forName("org.sqlite.JDBC");
             Connection conn = DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Me\\Dropbox\\SEMESTER2\\BIF812\\test.db");
             System.out.println("Connection successful");
@@ -15,9 +19,9 @@ public class Database {
       }
     public void makeTable(){
         Statement stmt = null;
+        Connection c = null;
         try {
-          Class.forName("org.sqlite.JDBC");
-          Connection c = connectDatabase();
+          c = connectDatabase();
           System.out.println("Opened database successfully");
 
           stmt = c.createStatement();
@@ -42,10 +46,8 @@ public class Database {
         Connection c = null;
         Statement stmt = null;
         String holder;
-
         
         try {
-          Class.forName("org.sqlite.JDBC");
           c = connectDatabase();
           c.setAutoCommit(false);
           System.out.println("Opened database successfully");
@@ -53,11 +55,13 @@ public class Database {
           stmt = c.createStatement();
           System.out.println("Printing file");
           CSVloader csvloader = new CSVloader();
-
+          
+          //Saves files as a string
           holder = csvloader.loadCSVFromFile(filepath);
- 
+          //String is divided by new line 
           String lines[] = holder.split("\\r?\\n");
-
+          //Each string is divided by , and stored into arrays
+          //arrays called on to make SQL insert statement
           for(String i : lines ) {
               String values[] = i.split(",");
               String sql = "INSERT INTO TESTWEATHER (ID,DATE,TIME,TEMP,HUMIDITY,WETNESS) VALUES ("
@@ -85,7 +89,6 @@ public class Database {
             Connection c = null;
             Statement stmt = null;
             try {
-              Class.forName("org.sqlite.JDBC");
               c = connectDatabase();
               c.setAutoCommit(false);
               System.out.println("Opened database successfully");
